@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychology Interview Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .form-label {
+            @apply block text-sm font-medium text-gray-700 mb-1;
+        }
+        .form-input, .form-textarea, .form-select {
+            @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm;
+        }
+        .form-section {
+            @apply bg-white p-6 rounded-lg shadow-md;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto px-4 py-6 max-w-3xl">
+
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Psychology Interview Planner</h1>
+            <p class="mt-2 text-md text-gray-600">Use this tool to organize your group's research plan and submit it to your teacher.</p>
+        </header>
+
+        <form id="research-form" class="space-y-6">
+
+            <!-- Section 1: Group and Research Question -->
+            <div class="form-section">
+                <h2 class="text-lg font-semibold border-b pb-2 mb-4">Step 1: Group Details & Research Question</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="member1" class="form-label">Member 1 Name</label>
+                        <input type="text" id="member1" name="member1" class="form-input" placeholder="Full Name" required>
+                    </div>
+                    <div>
+                        <label for="member2" class="form-label">Member 2 Name</label>
+                        <input type="text" id="member2" name="member2" class="form-input" placeholder="Full Name (Optional)">
+                    </div>
+                    <div>
+                        <label for="member3" class="form-label">Member 3 Name</label>
+                        <input type="text" id="member3" name="member3" class="form-input" placeholder="Full Name (Optional)">
+                    </div>
+                    <div>
+                        <label for="member4" class="form-label">Member 4 Name</label>
+                        <input type="text" id="member4" name="member4" class="form-input" placeholder="Full Name (Optional)">
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <label for="class-level" class="form-label">Class Level</label>
+                    <select id="class-level" name="classLevel" class="form-select" required>
+                        <option value="">-- Select your class level --</option>
+                        <option value="HL">HL (Higher Level)</option>
+                        <option value="SL">SL (Standard Level)</option>
+                    </select>
+                </div>
+                <div class="mt-4">
+                    <label for="research-question" class="form-label">What is your research question?</label>
+                    <textarea id="research-question" name="researchQuestion" rows="3" class="form-textarea" placeholder="e.g., How do students manage stress during exam periods?" required></textarea>
+                </div>
+            </div>
+
+            <!-- Section 2: Methodology -->
+            <div class="form-section">
+                <h2 class="text-lg font-semibold border-b pb-2 mb-4">Step 2: Methodology</h2>
+                <div>
+                    <label for="interview-type" class="form-label">Interview Type</label>
+                    <select id="interview-type" name="interviewType" class="form-select" required>
+                        <option value="">-- Select an interview type --</option>
+                        <option value="Structured">Structured Interview</option>
+                        <option value="Semi-structured">Semi-structured Interview</option>
+                        <option value="Focus Group">Focus Group Interview</option>
+                    </select>
+                </div>
+                <div class="mt-4">
+                    <label for="interview-guide" class="form-label">Interview Guide (List your questions)</label>
+                    <textarea id="interview-guide" name="interviewGuide" rows="8" class="form-textarea" placeholder="1. Can you describe a typical day during the exam period?&#10;2. What strategies, if any, do you use to cope with academic pressure?&#10;3. ..." required></textarea>
+                </div>
+            </div>
+
+            <!-- Section 3: Ethical Considerations -->
+            <div class="form-section">
+                <h2 class="text-lg font-semibold border-b pb-2 mb-4">Step 3: Ethical Considerations Checklist</h2>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex items-start">
+                            <input id="informed-consent" name="informedConsent" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" required>
+                            <div class="ml-3 text-sm">
+                                <label for="informed-consent" class="font-medium text-gray-700">Informed Consent Form Prepared</label>
+                                <p class="text-gray-500">Includes purpose, data usage, and right to withdraw.</p>
+                            </div>
+                        </div>
+                        <div id="informed-consent-link-container" class="mt-2 ml-8 hidden">
+                            <label for="informed-consent-link" class="form-label">Link to Informed Consent Document (GitHub, Google Doc, etc.)</label>
+                            <input type="url" id="informed-consent-link" name="informedConsentLink" class="form-input" placeholder="https://github.com/user/repo/blob/main/consent.md">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-start">
+                            <input id="debriefing-statement" name="debriefingStatement" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" required>
+                            <div class="ml-3 text-sm">
+                                <label for="debriefing-statement" class="font-medium text-gray-700">Debriefing Statement Prepared</label>
+                                <p class="text-gray-500">To be given to participants after the interview.</p>
+                            </div>
+                        </div>
+                        <div id="debriefing-statement-link-container" class="mt-2 ml-8 hidden">
+                            <label for="debriefing-statement-link" class="form-label">Link to Debriefing Statement Document</label>
+                            <input type="url" id="debriefing-statement-link" name="debriefingStatementLink" class="form-input" placeholder="https://github.com/user/repo/blob/main/debrief.md">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Section 4: Role Assignment -->
+            <div class="form-section">
+                <h2 class="text-lg font-semibold border-b pb-2 mb-4">Step 4: Role Assignment</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="interviewer" class="form-label">Interviewer</label>
+                        <input type="text" id="interviewer" name="interviewer" class="form-input" placeholder="Student's Name" required>
+                    </div>
+                    <div>
+                        <label for="note-taker" class="form-label">Note-taker</label>
+                        <input type="text" id="note-taker" name="noteTaker" class="form-input" placeholder="Student's Name" required>
+                    </div>
+                    <div>
+                        <label for="technician" class="form-label">Technician (Audio)</label>
+                        <input type="text" id="technician" name="technician" class="form-input" placeholder="Student's Name" required>
+                    </div>
+                    <div>
+                        <label for="research-assistant" class="form-label">Research Assistant (Logistics)</label>
+                        <input type="text" id="research-assistant" name="researchAssistant" class="form-input" placeholder="Student's Name" required>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Submission Button -->
+            <div class="text-center">
+                <button type="submit" id="submit-button" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-300">
+                    Submit Plan to Google Sheet
+                </button>
+            </div>
+             <!-- Message Area -->
+            <div id="message" class="text-center mt-4 text-sm font-medium"></div>
+
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('research-form');
+        const submitButton = document.getElementById('submit-button');
+        const messageDiv = document.getElementById('message');
+
+        const informedConsentCheckbox = document.getElementById('informed-consent');
+        const debriefingStatementCheckbox = document.getElementById('debriefing-statement');
+        
+        const informedConsentLinkContainer = document.getElementById('informed-consent-link-container');
+        const debriefingStatementLinkContainer = document.getElementById('debriefing-statement-link-container');
+        
+        const informedConsentLinkInput = document.getElementById('informed-consent-link');
+        const debriefingStatementLinkInput = document.getElementById('debriefing-statement-link');
+
+        informedConsentCheckbox.addEventListener('change', () => {
+            if (informedConsentCheckbox.checked) {
+                informedConsentLinkContainer.classList.remove('hidden');
+                informedConsentLinkInput.required = true;
+            } else {
+                informedConsentLinkContainer.classList.add('hidden');
+                informedConsentLinkInput.required = false;
+            }
+        });
+
+        debriefingStatementCheckbox.addEventListener('change', () => {
+            if (debriefingStatementCheckbox.checked) {
+                debriefingStatementLinkContainer.classList.remove('hidden');
+                debriefingStatementLinkInput.required = true;
+            } else {
+                debriefingStatementLinkContainer.classList.add('hidden');
+                debriefingStatementLinkInput.required = false;
+            }
+        });
+
+        // IMPORTANT: Replace this with your actual Google Apps Script Web App URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyeylRVm03zw9L18izI7uNWx61R5Q-y9yn__8xxf7rmAnhckFI_EKFgzdfuYAz4Tl7B/exec';
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Check if the placeholder URL is still there
+            if (GOOGLE_SCRIPT_URL === 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                 messageDiv.textContent = 'Error: The form is not connected to a Google Sheet yet. The teacher needs to configure the script URL.';
+                 messageDiv.className = 'text-red-600';
+                return;
+            }
+
+            // Disable button and show loading message
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+            messageDiv.textContent = '';
+            messageDiv.className = '';
+            
+            const formData = new FormData(form);
+            const data = {};
+            
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // FormData does not include unchecked checkboxes, so we handle them manually.
+            data['informedConsent'] = informedConsentCheckbox.checked;
+            data['debriefingStatement'] = debriefingStatementCheckbox.checked;
+
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                    redirect: 'follow'
+                });
+                
+                // Assuming the Apps Script is set up for CORS and returns JSON
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok, status: ${response.status}`);
+                }
+
+                const result = await response.json();
+
+                if (result.result === 'success') {
+                    messageDiv.textContent = 'Success! Your research plan has been submitted.';
+                    messageDiv.className = 'text-green-600';
+                    form.reset();
+                    // Manually hide link sections on reset
+                    informedConsentLinkContainer.classList.add('hidden');
+                    debriefingStatementLinkContainer.classList.add('hidden');
+                } else {
+                    throw new Error(result.message || 'An unknown error occurred on the server.');
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                messageDiv.textContent = `Submission failed: ${error.message}. Please check console for details.`;
+                messageDiv.className = 'text-red-600';
+            } finally {
+                // Re-enable button
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit Plan to Google Sheet';
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
